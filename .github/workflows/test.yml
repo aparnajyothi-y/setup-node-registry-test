@@ -25,7 +25,7 @@ jobs:
         # This will not build the package again, if we already generated the
         # prebuild for the operating system and CPU where this job is running.
       - run: npm publish
-      - env:
+         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Node.js for npmjs
@@ -37,5 +37,5 @@ jobs:
         # This will not build the package again, if we already generated the
         # prebuild for the operating system and CPU where this job is running.
       - run: npm publish
-      - env:
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
