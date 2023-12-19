@@ -1,113 +1,24 @@
-name: mediasoup-pack
+name: registrytest
 
 on:
  
   workflow_dispatch:
 
 jobs:
-  linux-x64:
-    name: Create prebuild image for Linux x86_64
 
-    runs-on: ubuntu-latest
-
+  test-setup-v4:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Node.js
-        uses: actions/setup-node@v3
-
-      # We need to install some NPM production deps for npm-scripts.mjs to work.
-      - run: npm ci --ignore-scripts --omit=dev --verbose
-
-      - run: npm run worker:build
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: linux-x64
-          path: worker/out/linux-x64/Release/mediasoup-worker
-          retention-days: 1
-
-  macos-x64:
-    name: Create prebuild image for macOS x86_64
-
-    runs-on: macos-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Node.js
-        uses: actions/setup-node@v3
-
-      # We need to install some NPM production deps for npm-scripts.mjs to work.
-      - run: npm ci --ignore-scripts --omit=dev --verbose
-
-      - run: npm run worker:build
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: darwin-x64
-          path: worker/out/darwin-x64/Release/mediasoup-worker
-          retention-days: 1
-
-  windows-x64:
-    name: Create prebuild image for Windows x86_64
-
-    runs-on: windows-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Node.js
-        uses: actions/setup-node@v3
-
-      # We need to install some NPM production deps for npm-scripts.mjs to work.
-      - run: npm ci --ignore-scripts --omit=dev --verbose
-
-      - run: npm run worker:build
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: win32-x64
-          path: worker/out/win32-x64/Release/mediasoup-worker.exe
-          retention-days: 1
-
-  pack:
-    name: Bundle the prebuild images and publish the package
-
-    needs: [linux-x64, macos-x64, windows-x64]
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Download prebuild image for Linux x86_64
-        uses: actions/download-artifact@v3
-        with:
-          name: linux-x64
-          path: worker/out/linux-x64/Release
-
-      - name: Download prebuild image for macOS x86_64
-        uses: actions/download-artifact@v3
-        with:
-          name: darwin-x64
-          path: worker/out/darwin-x64/Release
-
-      - name: Download prebuild image for Windows x86_64
-        uses: actions/download-artifact@v3
-        with:
-          name: win32-x64
-          path: worker/out/win32-x64/Release
-
-      - run: chmod +x worker/out/*/Release/mediasoup-worker*
-
-      - name: Install Node.js dependencies
-        uses: actions/setup-node@v3
-      - run: npm ci
+      - uses: actions/checkout@v3
+      
+      - name: Setup dotnet 2.2.402, 3.1.404 and 3.0.x
+      - uses: actions/setup-node@v4
+      
 
       - name: Node.js for GitHub Packages Registry
         uses: actions/setup-node@v3
