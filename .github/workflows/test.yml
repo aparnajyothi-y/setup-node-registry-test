@@ -16,10 +16,6 @@ jobs:
       - name: Checkout
       - uses: actions/checkout@v3
       
-      - name: Setup dotnet 2.2.402, 3.1.404 and 3.0.x
-      - uses: actions/setup-node@v4
-      
-
       - name: Node.js for GitHub Packages Registry
       - uses: actions/setup-node@v3
         with:
