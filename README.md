@@ -1,0 +1,1 @@
+# setup-node-registry-test
