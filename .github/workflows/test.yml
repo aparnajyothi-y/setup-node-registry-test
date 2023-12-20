@@ -25,7 +25,7 @@ jobs:
               steps:
                 - uses: actions/checkout@v4
                 - name: Setup node from node version file
-                - uses: ThisIsManta/setup-node@volta-extends
+                  uses: ThisIsManta/setup-node@volta-extends
                   with:
                     node-version-file: '__tests__/data/package-volta.json'
                 - name: Verify node
@@ -40,7 +40,7 @@ jobs:
               steps:
                 - uses: actions/checkout@v4
                 - name: Setup node from node version file
-                - uses: ThisIsManta/setup-node@volta-extends
+                  uses: ThisIsManta/setup-node@volta-extends
                   with:
                     node-version-file: '__tests__/data/package-volta-extends.json'
                 - name: Verify node
