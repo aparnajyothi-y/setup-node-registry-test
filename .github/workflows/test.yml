@@ -19,7 +19,7 @@ jobs :
                   with:
                     node-version-file: '__tests__/data/package-volta.json'
                 - name: Verify node
-                  run: __tests__/verify-node.sh 16
+                  run: __tests__/verify-node.sh 16.0.0
 
             
 
