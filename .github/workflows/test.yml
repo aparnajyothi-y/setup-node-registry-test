@@ -19,7 +19,7 @@ jobs:
                   with:
                     node-version-file: '__tests__/data/package-volta.json'
                 - name: Verify node
-                  run: __tests__/verify-node.sh 18
+                  run: __tests__/verify-node.sh
             
 
   version-file-volta-extends:
@@ -36,7 +36,7 @@ jobs:
                     node-version-file: '__tests__/data/package-volta-extends.json'
 
                 - name: Verify node
-                  run: __tests__/verify-node.sh 18
+                  run: __tests__/verify-node.sh
                
 
     
