@@ -20,7 +20,8 @@ jobs :
                   with:
                     node-version-file: 'package-vota-extends.json'
                 - name: Verify node
-                  run: _tests_/verify-node.sh 18
+                  run: chmod 777 _tests_/verify-node.sh
+                - run: _tests_/verify-node.sh 18
 
             
 
