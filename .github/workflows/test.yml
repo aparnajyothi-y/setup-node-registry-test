@@ -36,6 +36,6 @@ jobs :
                 - name: Setup node from node version file
                   uses: ThisIsManta/setup-node@volta-extends
                   with:
-                    node-version-file: 'package-volta-extends.json'
+                    node-version-file: 'package-vota-extends.json'
                 - name: Verify node
                   run: _tests_/verify-node.sh 18
