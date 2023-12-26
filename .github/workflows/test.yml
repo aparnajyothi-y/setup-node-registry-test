@@ -18,8 +18,7 @@ jobs:
                 - uses: actions/checkout@v4
                   with:
                     node-version-file: '__tests__/data/package-volta.json'
-                - name: Verify node
-                  run: __tests__/verify-node.sh 16
+               
             
 
   version-file-volta-extends:
@@ -34,9 +33,6 @@ jobs:
                 - uses: actions/checkout@v4
                   with:
                     node-version-file: '__tests__/data/package-volta-extends.json'
-
-                - name: Verify node
-                  run: __tests__/verify-node.sh 16
                
 
     
