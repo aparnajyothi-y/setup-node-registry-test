@@ -19,7 +19,8 @@ jobs :
                   with:
                     node-version-file: '__tests__/data/package-volta.json'
                 - name: Verify node
-                  run: __tests__/verify-node.sh 16.0.0
+                  uses: ThisIsManta/setup-node@volta-extends
+                  run: __tests__/verify-node.sh 16
 
             
 
@@ -36,4 +37,5 @@ jobs :
                   with:
                     node-version-file: '__tests__/data/package-volta-extends.json'
                 - name: Verify node
+                  uses: ThisIsManta/setup-node@volta-extends
                   run: __tests__/verify-node.sh 16
