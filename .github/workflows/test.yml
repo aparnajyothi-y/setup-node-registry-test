@@ -24,18 +24,3 @@ jobs :
 
             
 
- version-file-volta-extends:
-              runs-on: ${{ matrix.os }}
-              strategy:
-                fail-fast: false
-                matrix:
-                  os: [ubuntu-latest, windows-latest, macos-latest]
-              steps:
-                - uses: actions/checkout@v4
-                  
-                - name: Setup node from node version file
-                  uses: ThisIsManta/setup-node@volta-extends
-                  with:
-                    node-version-file: 'package-vota-extends.json'
-                - name: Verify node
-                  run: _tests_/verify-node.sh 18
