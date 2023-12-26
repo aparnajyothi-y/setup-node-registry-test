@@ -14,15 +14,13 @@ jobs :
                   os: [ubuntu-latest, windows-latest, macos-latest]
               steps:
                 - uses: actions/checkout@v4
-                  with:
-                    repository: ThisIsManta/setup-node
-                    ref: volta-extends
+                  
                 - name: Setup node from node version file
                   uses: ThisIsManta/setup-node@volta-extends
                   with:
-                    node-version-file: '__tests__/data/package-volta.json'
+                    node-version-file: 'package-volta.json'
                 - name: Verify node
-                  run: __tests__/verify-node.sh 16
+                  run: verify-node.sh 18
 
             
 
@@ -34,12 +32,10 @@ jobs :
                   os: [ubuntu-latest, windows-latest, macos-latest]
               steps:
                 - uses: actions/checkout@v4
-                  with:
-                    repository: ThisIsManta/setup-node
-                    ref: volta-extends
+                  
                 - name: Setup node from node version file
                   uses: ThisIsManta/setup-node@volta-extends
                   with:
-                    node-version-file: '__tests__/data/package-volta-extends.json'
+                    node-version-file: 'package-volta-extends.json'
                 - name: Verify node
-                  run: __tests__/verify-node.sh 16
+                  run: verify-node.sh 18
